@@ -68,14 +68,14 @@ W celu zapoznania się z językiem programowania, jakim jest Python oraz z zagad
 
 ## Źródła
 
-https://www.kaggle.com/c/gan-getting-started
-https://chmurowisko.pl/gan-ai-generujaca-rzeczywistosc
-https://atozofai.withgoogle.com/intl/pl/gans
-https://keras.io/
-https://www.tensorflow.org/api_docs/python/tf/all_symbols
-https://ichi.pro/pl/zamiana-plci-i-cyclegan-w-tensorflow-2-0-58960896505855
-https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/
-https://arxiv.org/pdf/1406.2661.pdf - GAN
-https://arxiv.org/pdf/1511.06434.pdf - DCGAN
-https://arxiv.org/pdf/1703.10593.pdf - CycleGAN
+- https://www.kaggle.com/c/gan-getting-started
+- https://chmurowisko.pl/gan-ai-generujaca-rzeczywistosc
+- https://atozofai.withgoogle.com/intl/pl/gans
+- https://keras.io/
+- https://www.tensorflow.org/api_docs/python/tf/all_symbols
+- https://ichi.pro/pl/zamiana-plci-i-cyclegan-w-tensorflow-2-0-58960896505855
+- https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/
+- https://arxiv.org/pdf/1406.2661.pdf - GAN
+- https://arxiv.org/pdf/1511.06434.pdf - DCGAN
+- https://arxiv.org/pdf/1703.10593.pdf - CycleGAN
 
