@@ -55,7 +55,9 @@ Wykorzystanie platformy Kaggle zapewnia dostęp do odpowiednich zestawów danych
 - Wspólna dyskusja i wyciągnięcie wniosków, podzielenie się najbardziej trafnymi materiałami, ocena dostępnych poradników i fragmentów kodu
 - Samodzielne eksperymenty z implementacją wybranych metod, wstępny projekt modeli i dobór parametrów
 - Wspólna dyskusja i  wyciągnięcie wniosków, wybór najbardziej obiecujących metod / sposobów implementacji / wykorzystanych bibliotek
+
 Następnie - podział obowiązków związanych z ostatecznym etapem przygotowania projektu na poszczególne osoby:
+
 - Magdalena Falkowska - końcowa implementacja, przygotowanie finalnych wersji modeli i programu
 - Dawid Alimowski - konfiguracja, trening modeli, dobór odpowiednich parametrów, generacja wynikowych obrazów
 - Adam Bielecki - szczegółowe opracowanie wyników, porównanie zbiorów danych, podsumowanie prac nad projektem i wyciągnięcie wniosków
