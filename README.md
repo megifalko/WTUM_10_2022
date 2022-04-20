@@ -51,10 +51,10 @@ Projekt zrealizowany zostanie w języku Python, ze względu na dostępność lic
 
 Wykorzystanie platformy Kaggle zapewnia dostęp do odpowiednich zestawów danych, w związku z czym ten etap przygotowania projektu można uznać za gotowy. W wyniku zespołowej dyskusji, zaproponowano następujący podział zadania na etapy, który uwzględnia możliwość samodzielnego zapoznania się z tematem projektu i eksperymentów z implementacją:
 
-We własnym zakresie - głębsze zbadanie tematu projektu, dostępnych poradników, materiałów edukacyjnych, publicznych fragmentów kodu, referencyjnych implementacji, oryginalnych artykułów opisujących mechanizmy działania sieci, etc.
-Wspólna dyskusja i wyciągnięcie wniosków, podzielenie się najbardziej trafnymi materiałami, ocena dostępnych poradników i fragmentów kodu
-Samodzielne eksperymenty z implementacją wybranych metod, wstępny projekt modeli i dobór parametrów
-Wspólna dyskusja i  wyciągnięcie wniosków, wybór najbardziej obiecujących metod / sposobów implementacji / wykorzystanych bibliotek
+- We własnym zakresie - głębsze zbadanie tematu projektu, dostępnych poradników, materiałów edukacyjnych, publicznych fragmentów kodu, referencyjnych implementacji, oryginalnych artykułów opisujących mechanizmy działania sieci, etc.
+- Wspólna dyskusja i wyciągnięcie wniosków, podzielenie się najbardziej trafnymi materiałami, ocena dostępnych poradników i fragmentów kodu
+- Samodzielne eksperymenty z implementacją wybranych metod, wstępny projekt modeli i dobór parametrów
+- Wspólna dyskusja i  wyciągnięcie wniosków, wybór najbardziej obiecujących metod / sposobów implementacji / wykorzystanych bibliotek
 Następnie - podział obowiązków związanych z ostatecznym etapem przygotowania projektu na poszczególne osoby:
 - Magdalena Falkowska - końcowa implementacja, przygotowanie finalnych wersji modeli i programu
 - Dawid Alimowski - konfiguracja, trening modeli, dobór odpowiednich parametrów, generacja wynikowych obrazów
@@ -62,9 +62,15 @@ Następnie - podział obowiązków związanych z ostatecznym etapem przygotowani
 
 ## Dokumentacja i przebieg pracy własnej
 
+### Dawid Alimowski
+
+Postarałem się przełożyć wiedzę oraz kod udostępniony w [oficjalnym poradniku platformy Tensorflow do CycleGANa](https://www.tensorflow.org/tutorials/generative/cyclegan) na nasz konkretny przypadek, tj. transfer stylu wybranego artysty na zdjęcia. Uruchomienie programu wymagało konfiguracji środowiska z Pythonem oraz instalacji odpowiednich bibliotek umożliwiających wykonywanie obliczeń na karcie graficznej. Po drodze napotkałem problemy wynikające z faktu, że całość była wykonywana na systemie Windows, czego twórcy wykorzystywanych w naszym projekcie zbiorów danych nie przewidzieli. Mimo tego, po zgłębieniu dokumentacji API Tensorflow oraz przeszukaniu internetowych archiwów udało mi się zmodyfikować przykładowy kod tak, aby uruchomienie go było możliwe również na Windowsie. Znajduje się on w pliku `vangogh.py`.
+
+Wedle wytycznych z poradnika, model został wytrenowany przez co najmniej 40 epok. W folderze `vangogh_examples` znajdują się próbki powstałe z przykładowych zdjęć ilustrujące możliwości modelu. W następnym etapie pracy nad projektem należałoby zastanowić się nad modyfikacją parametrów oraz wykonać dłuższy (~300 epok według oryginalnego artykułu o CycleGANach) trening modelu na różnych zbiorach danych.
+
 ### Magdalena Falkowska
 
-W celu zapoznania się z językiem programowania, jakim jest Python oraz z zagadnieniem CycleGAN, postanowiłam skorzystać z tutorialu umieszczonego na stronie Kaggle (https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial). Platforma Kaggle umożliwia kopiowanie i edycję notatników stworzonych przez inne osoby, w związku z czym postanowiłam skopiować notatnik i linijka po linijce zapoznać się z kodem, by zrozumieć architekturę CycleGAN oraz sposób ich implementacji. W tekście objaśniającym kolejne fragmenty kodu pojawiało się wiele obcych nazw i pojęć specyficznych dla wybranej biblioteki (Tensorflow). Starałam się wyszukiwać kolejne pojęcia w dokumentacji, sprawdzić jak działają dane funkcje i jaka jest ich rola. Napisałam własne objaśnienia w języku polskim, w celu lepszego zrozumienia tematu oraz opisaniu kolejnych bloków kodu. Notatnik dostępny jest w repozytorium pod nazwą monet-cyclegan.ipynb. Ze względu na długi czas trwania każdej epoki, uczenie modelu przerwałam na 5 epoce, udało mi się jednak zweryfikować poprawność konfiguracji środowiska i przykładowego kodu implementującego GAN. 
+W celu zapoznania się z językiem programowania, jakim jest Python oraz z zagadnieniem CycleGAN, postanowiłam skorzystać z tutorialu umieszczonego na stronie Kaggle (https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial). Platforma Kaggle umożliwia kopiowanie i edycję notatników stworzonych przez inne osoby, w związku z czym postanowiłam skopiować notatnik i linijka po linijce zapoznać się z kodem, by zrozumieć architekturę CycleGAN oraz sposób ich implementacji. W tekście objaśniającym kolejne fragmenty kodu pojawiało się wiele obcych nazw i pojęć specyficznych dla wybranej biblioteki (Tensorflow). Starałam się wyszukiwać kolejne pojęcia w dokumentacji, sprawdzić jak działają dane funkcje i jaka jest ich rola. Napisałam własne objaśnienia w języku polskim, w celu lepszego zrozumienia tematu oraz opisaniu kolejnych bloków kodu. Notatnik dostępny jest w repozytorium pod nazwą `monet-cyclegan.ipynb`. Ze względu na długi czas trwania każdej epoki, uczenie modelu przerwałam na 5 epoce, udało mi się jednak zweryfikować poprawność konfiguracji środowiska i przykładowego kodu implementującego GAN. 
 
 Próbowałam również skonfigurować środowisko lokalnie, pobrać wymagane biblioteki i uruchomić kod. Niestety napotkałam na problemy związane z importowaniem bibliotek i nie udało mi się ich rozwiązać, w związku z czym rozwiązanie opisane wcześniej, które bazowało na wykorzystaniu prekonfigurowanego środowiska udostępnianego przez platformę Kaggle, okazało się być lepszym rozwiązaniem. W następnym etapie pracy nad projektem postaram się z pomocą członków zespołu skonfigurować również środowisko lokalnie, by móc bez przeszkód pracować nad projektem.
 
@@ -75,9 +81,9 @@ Próbowałam również skonfigurować środowisko lokalnie, pobrać wymagane bib
 - https://atozofai.withgoogle.com/intl/pl/gans
 - https://keras.io/
 - https://www.tensorflow.org/api_docs/python/tf/all_symbols
+- https://www.tensorflow.org/tutorials/generative/cyclegan
 - https://ichi.pro/pl/zamiana-plci-i-cyclegan-w-tensorflow-2-0-58960896505855
 - https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/
 - https://arxiv.org/pdf/1406.2661.pdf - GAN
 - https://arxiv.org/pdf/1511.06434.pdf - DCGAN
 - https://arxiv.org/pdf/1703.10593.pdf - CycleGAN
-
