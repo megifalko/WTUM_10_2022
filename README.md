@@ -76,6 +76,10 @@ W celu zapoznania się z językiem programowania, jakim jest Python oraz z zagad
 
 Próbowałam również skonfigurować środowisko lokalnie, pobrać wymagane biblioteki i uruchomić kod. Niestety napotkałam na problemy związane z importowaniem bibliotek i nie udało mi się ich rozwiązać, w związku z czym rozwiązanie opisane wcześniej, które bazowało na wykorzystaniu prekonfigurowanego środowiska udostępnianego przez platformę Kaggle, okazało się być lepszym rozwiązaniem. W następnym etapie pracy nad projektem postaram się z pomocą członków zespołu skonfigurować również środowisko lokalnie, by móc bez przeszkód pracować nad projektem.
 
+### Adam Bielecki
+
+Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial. Zapoznałem się z kodem i odpaliłem go. Szczególnie przyjrzałem się funkcjom generatora: downsample i upsample. 
+
 ## Źródła
 
 - https://www.kaggle.com/c/gan-getting-started
