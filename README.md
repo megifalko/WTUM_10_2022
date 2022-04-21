@@ -78,7 +78,7 @@ Próbowałam również skonfigurować środowisko lokalnie, pobrać wymagane bib
 
 ### Adam Bielecki
 
-Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial. Zapoznałem się z kodem i odpaliłem go. Szczególnie przyjrzałem się funkcjom generatora: downsample i upsample. 
+Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial. Zapoznałem się z kodem i odpaliłem go. Szczególnie przyjrzałem się funkcjom generatora: downsample i upsample. Uruchomiłem kod. Jednak więcej niż 9 epok nie był uruchomiony, gdyż za długo to trwało.
 
 ## Źródła
 
