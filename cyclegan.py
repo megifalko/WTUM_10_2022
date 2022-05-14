@@ -65,7 +65,7 @@ test_A = test_A.map(
     preprocess_image_test, num_parallel_calls=AUTOTUNE).cache().shuffle(
     BUFFER_SIZE).batch(BATCH_SIZE)
 
-sample_B = m.load('test.jpg')
+sample_B = next(iter(train_B))
 
 generator_g = m.ResnetGenerator(input_shape=(IMG_WIDTH, IMG_HEIGHT, 3))
 generator_f = m.ResnetGenerator(input_shape=(IMG_WIDTH, IMG_HEIGHT, 3))
