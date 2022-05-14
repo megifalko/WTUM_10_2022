@@ -5,9 +5,6 @@ import tensorflow_addons as tfa
 import matplotlib.pyplot as plt
 import string
 import random
-from PIL import Image
-import numpy as np
-from skimage import transform
 
 def random_crop(image, width, height):
   cropped_image = tf.image.random_crop(
@@ -175,10 +172,3 @@ def generate_images(model, test_input, epoch = ''):
     plt.axis('off')
   plt.savefig('output/' + ''.join(random.choices(string.ascii_lowercase + string.digits, k=10)) + '.png', bbox_inches='tight')
   plt.show()
-
-def load(filename):
-   np_image = Image.open(filename)
-   np_image = ((np.array(np_image).astype('float32')/255)*2)-1
-   np_image = transform.resize(np_image, (256, 256, 3))
-   np_image = np.expand_dims(np_image, axis=0)
-   return np_image
