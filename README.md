@@ -188,34 +188,34 @@ W wygenerowanych obrazach można zwrócić uwagę na zmianę zmianę kolorystyki
 
 Zieleń często staje się brunatna. Niebieski zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
 
-![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5C9swqjria72.png)
-![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5Cdqmw58nus3.png)
-![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5Cxxafx167gs.png)
+![](OUTPUT/cezanne/cezanne_epoch30/9swqjria72.png)
+![](OUTPUT/cezanne/cezanne_epoch30/dqmw58nus3.png)
+![](OUTPUT/cezanne/cezanne_epoch30/xxafx167gs.png)
 
 Rzeczywiście istnieje wiele prawdziwych pejzaży Cezanne'a w kolorystyce o dominujących kolorach brunatnych i żółtych, lub zielonych. Poniżej kilka przykładów o dominujących brunatnych kolorach
 
-![](REAL%5Ccezanne%5C00299.jpg) ![](REAL%5Ccezanne%5C00375.jpg) ![](REAL%5Ccezanne%5C00084.jpg) ![](REAL%5Ccezanne%5C00216.jpg) ![](REAL%5Ccezanne%5C00277.jpg) 
+![](REAL/cezanne/00299.jpg) ![](REAL/cezanne/00375.jpg) ![](REAL/cezanne/00084.jpg) ![](REAL/cezanne/00216.jpg) ![](REAL/cezanne/00277.jpg) 
 
 Również są i te zielone
 
-![](REAL%5Ccezanne%5C00307.jpg) ![](REAL%5Ccezanne%5C00226.jpg) ![](REAL%5Ccezanne%5C00231.jpg) 
+![](REAL/cezanne/00307.jpg) ![](REAL/cezanne/00226.jpg) ![](REAL/cezanne/00231.jpg) 
 
 
 ### Mgła Moneta
 Monet starając się oddać impresję, wrażenie, często przedstawiał świat na swoich obrazach jakby poprzez mgłę, parę lub dym. Kontury wtedy stają się niewyraźne, a szczegóły zacierają się za kłebami mgły. Oto kilka prawdziwych przykładów. 
 
-![](REAL%5Cmonet%5C00318.jpg) ![](REAL%5Cmonet%5C00606.jpg) ![](REAL%5Cmonet%5C00118.jpg) ![](REAL%5Cmonet%5C00179.jpg) ![](REAL%5Cmonet%5C00305.jpg) 
+![](REAL/monet/00318.jpg) ![](REAL/monet/00606.jpg) ![](REAL/monet/00118.jpg) ![](REAL/monet/00179.jpg) ![](REAL/monet/00305.jpg) 
 
 Czy wygenerowane obrazy również posiadają takie cechy?
 
 Na pewno można zauważyć, ogólne rozmazanie obrazów i zatarcie konturów. Jako przykłady można pokazać obrazy poniżej
 
-![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Coid73z9dt5.png)
-![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Cnauwbfpzw8.png)
-![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Cfyilxzrlev.png)
+![](OUTPUT/monet/monet_epoch40/oid73z9dt5.png)
+![](OUTPUT/monet/monet_epoch40/nauwbfpzw8.png)
+![](OUTPUT/monet/monet_epoch40/fyilxzrlev.png)
 
 Nie da się jednak dostrzec na tych zdjęciach wyraźnego efektu mgły. Dając na wejście zdjęcia z bardzo jaskrawymi kolorami zachodzącego lub wschodzącego słońca, algorytm znacznie tonuje te kolory - rzeczywiście na wschodac słońca Moneta zawsze jest wszechobecna mgła. 
-![](OUTPUT%5Cmonet%5Csunrise2.png) ![](OUTPUT%5Cmonet%5Csunrise.png) 
+![](OUTPUT/monet/sunrise2.png) ![](OUTPUT/monet/sunrise.png) 
 
 ## Źródła
 
