@@ -80,6 +80,143 @@ Próbowałam również skonfigurować środowisko lokalnie, pobrać wymagane bib
 
 Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial. Zapoznałem się z kodem i odpaliłem go. Szczególnie przyjrzałem się funkcjom generatora: downsample i upsample. Uruchomiłem kod. Jednak więcej niż 9 epok nie był uruchomiony, gdyż za długo to trwało.
 
+- [x] prównanie pomiędzy epokami
+- [ ] czym jest epoka?
+- [ ] ile trwała jedna epoka?
+- [ ] ten sam obraz wiele stylów
+- [ ] Cechy charakterystyczne artystów
+  - [ ] Mgła Moneta
+  - [x] Porównnie nieba
+  - [x] roślinność cezannea
+
+## Podsumowanie
+
+### Opis wykorzystywanych zbiorów danych
+
+### Ocena efektywności za pomocą miar
+
+### Analiza porównawcza wyników dla różnych parametrów
+
+### Van Gogh
+
+Porównanie wygenerowanych obrazów ze względu na liczbę epok
+
+![](OUTPUT/vangogh/epoch1.png)
+*1 epoka*
+  
+-----
+
+![](OUTPUT/vangogh/epoch10.png)
+*10 epok*
+
+------
+![](OUTPUT/vangogh/epoch20.png)
+*20 epok*
+
+------
+![](OUTPUT/vangogh/epoch30.png)
+*30 epok*
+
+------
+![](OUTPUT/vangogh/epoch40.png)
+*40 epok*
+
+### Cezanne
+
+
+![](OUTPUT/cezanne/epoch1.png)
+*1 epoka*
+-----
+
+![](OUTPUT/cezanne/epoch10.png)
+*10 epok*
+
+------
+![](OUTPUT/cezanne/epoch20.png)
+*20 epok*
+
+------
+![](OUTPUT/cezanne/epoch30.png)
+*30 epok*
+
+------
+![](OUTPUT/cezanne/epoch40.png)
+*40 epok*
+
+### Monet
+
+![](OUTPUT/monet/epoch1.png)
+*1 epoka*
+
+-----
+![](OUTPUT/monet/epoch10.png)
+*10 epok*
+
+------
+![](OUTPUT/monet/epoch20.png)
+*20 epok*
+
+------
+![](OUTPUT/monet/epoch30.png)
+*30 epok*
+
+------
+![](OUTPUT/monet/epoch40.png)
+*40 epok*
+
+
+Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazowi. Na początku widoczne są różne artefakty w postaci czernych lub czerwonych plam, widać również nienaturalne kolory. Z kolejnymi epokami artefakty i krawędzie się zacierają, a kolory zaczynają być bardziej stonowane.
+
+## Niebo Van Gogha
+Jenym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów z wyeksponowanym niebem.
+
+![](REAL/vangogh/Van_Gogh_Starry_Night.jpg)
+![](REAL%5Cvangogh%5C00318.jpg) ![](REAL%5Cvangogh%5C00356.jpg) ![](REAL%5Cvangogh%5C00371.jpg) ![](REAL%5Cvangogh%5C00403.jpg)
+
+Niebo jest namalowane drobnymi, spiralnymi pociągnięciami pędzla sprawiając wrażenienie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
+
+![](OUTPUT/vangogh/vangogh_epoch40/4.png)
+![](OUTPUT/vangogh/vangogh_epoch40/7.png)
+![](OUTPUT/vangogh/vangogh_epoch40/8.png)
+
+Niebo na powyżej przedstawionych wygenerowanych obrazach rzeczywiście można powiedzieć, że ma ziarnistą fakturę. Jednak w nie można dostrzec na nich charakterystycznych spiralnych wzorów.
+
+### Kolory Cezanne'a
+W wygenerowanych obrazach można zwrócić uwagę na zmianę zmianę kolorystyki zdjęć. Wyjątkowo wyraźnie zmiana kolorystyki uwidacznia się dla stylu Cezanne'a. Poniżej kilka przykładów.
+
+![](OUTPUT/cezanne/epoch40.png) ![](OUTPUT/cezanne/cezanne_epoch40/1.png) ![](OUTPUT/cezanne/cezanne_epoch40/2.png) ![](OUTPUT/cezanne/cezanne_epoch40/3.png)
+
+Zieleń często staje się brunatna. Niebieski zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
+
+![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5C9swqjria72.png)
+![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5Cdqmw58nus3.png)
+![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5Cxxafx167gs.png)
+
+Rzeczywiście istnieje wiele prawdziwych pejzaży Cezanne'a w kolorystyce o dominujących kolorach brunatnych i żółtych, lub zielonych. Poniżej kilka przykładów o dominujących brunatnych kolorach
+
+![](REAL%5Ccezanne%5C00299.jpg) ![](REAL%5Ccezanne%5C00375.jpg) ![](REAL%5Ccezanne%5C00084.jpg) ![](REAL%5Ccezanne%5C00216.jpg) ![](REAL%5Ccezanne%5C00277.jpg) 
+
+Również są i te zielone
+
+![](REAL%5Ccezanne%5C00307.jpg) ![](REAL%5Ccezanne%5C00226.jpg) ![](REAL%5Ccezanne%5C00231.jpg) 
+
+
+### Mgła Moneta
+Monet starając się oddać impresję, wrażenie, często przedstawiał świat na swoich obrazach jakby poprzez mgłę, parę lub dym. Kontury wtedy stają się niewyraźne, a szczegóły zacierają się za kłebami mgły. Oto kilka prawdziwych przykładów. 
+
+![](REAL%5Cmonet%5C00318.jpg) ![](REAL%5Cmonet%5C00606.jpg) ![](REAL%5Cmonet%5C00118.jpg) ![](REAL%5Cmonet%5C00179.jpg) ![](REAL%5Cmonet%5C00305.jpg) 
+
+Czy wygenerowane obrazy również posiadają takie cechy?
+
+Na pewno można zauważyć, ogólne rozmazanie obrazów i zatarcie konturów. Jako przykłady można pokazać obrazy poniżej
+
+![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Coid73z9dt5.png)
+![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Cnauwbfpzw8.png)
+![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Cfyilxzrlev.png)
+
+Nie da się jednak dostrzec na tych zdjęciach wyraźnego efektu mgły. Dając na wejście zdjęcia z bardzo jaskrawymi kolorami zachodzącego lub wschodzącego słońca, algorytm znacznie tonuje te kolory - rzeczywiście na wschodac słońca Moneta zawsze jest wszechobecna mgła. 
+![](OUTPUT%5Cmonet%5Csunrise2.png) ![](OUTPUT%5Cmonet%5Csunrise.png) 
+
 ## Źródła
 
 - https://www.kaggle.com/c/gan-getting-started
