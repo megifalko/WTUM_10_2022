@@ -171,7 +171,7 @@ Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazow
 Jenym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów z wyeksponowanym niebem.
 
 ![](REAL/vangogh/Van_Gogh_Starry_Night.jpg)
-![](REAL%5Cvangogh%5C00318.jpg) ![](REAL%5Cvangogh%5C00356.jpg) ![](REAL%5Cvangogh%5C00371.jpg) ![](REAL%5Cvangogh%5C00403.jpg)
+![](REAL/vangogh/00318.jpg) ![](REAL/vangogh/00356.jpg) ![](REAL/vangogh/00371.jpg) ![](REAL/vangogh/00403.jpg)
 
 Niebo jest namalowane drobnymi, spiralnymi pociągnięciami pędzla sprawiając wrażenienie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
 
