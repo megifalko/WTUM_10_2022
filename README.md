@@ -93,12 +93,16 @@ $$ + Tr(\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{1/2}),$$
 
 gdzie $Tr$ oznacza ślad macierzy.
 
-
-Oceny FID dla poszczególnych artystów dla wyniku po 40 epokach przedstawione zostały poniżej
+W każdym razie im mniejsza miara tym tym lepiej. Oceny FID dla poszczególnych artystów dla wyniku po 40 epokach przedstawione zostały poniżej
 
 ||Monet|Cezanne|Van Gogh|
 |----|---|---|---|
-|**FID:**|73.63|48.42|141.21|
+|**Photos with style - FID =**|73.63|48.42|141.21|
+|**Photos without style - FID =**|97.28|196.56|196.56|
+
+
+Powyższe wartości zostały obliczone na kodu obliczającego FID z następującego linku:
+https://www.kaggle.com/code/wendykan/demo-mifid-metric-for-dog-image-generation-comp/notebook. Z zestawienia widać, że po dodaniu stylu FID maleje. Zastanawiające jest to, że zdjęcia bez stylu w porównaniu z obrazami Cezanne'a oraz Van Gogha wypadają identycznie pod względem FID.
 
 <!-- Monet
 m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
@@ -128,9 +132,36 @@ done with FID, starting distance calculation
 d.shape= (2445, 400)
 np.min(d, axis=1).shape= (2445,)
 distance= 0.25525586414974816
-FID_public:  141.21430325414448 distance_public:  1 multiplied_public:  141.21430325414306 -->
+FID_public:  141.21430325414448 distance_public:  1 multiplied_public:  141.21430325414306 
+
+Photos vs Cezanne
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (6287, 525)
+np.min(d, axis=1).shape= (6287,)
+distance= 0.32137774360086246
+FID_public:  196.5578486308402 distance_public:  1 multiplied_public:  196.55784863083824
+
+
+Photos vs Van Gogh
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (6287, 525)
+np.min(d, axis=1).shape= (6287,)
+distance= 0.32137774360086246
+FID_public:  196.5578486308402 distance_public:  1 multiplied_public:  196.55784863083824
+-->
 
 ## Porównanie wygenerowanych obrazów ze względu na liczbę epok
+
+### Co to jest epoka?
+<!-- An epoch in machine learning means one complete pass of the training dataset through the algorithm. This epochs number is an important hyperparameter for the algorithm. It specifies the number of epochs or complete passes of the entire training dataset passing through the training or learning process of the algorithm. -->
+
+W uczeniu maszynowym *epoką* nazywamy jedno przejście algorytmu po całym treningowym zbiorze danych. Ten wskaźnik pokazuje jak daleko zaszedł proces trenowania lub uczenia modelu. Poniżej znajduje się zestawienie wygenerowanych zdjęć przez model dla kolejnej liczby epok dla poszczególnych artystów.
 
 ### Van Gogh
 
@@ -316,7 +347,6 @@ Równie ciekawym okazało się zestawienie wygenerowanych obrazów z tego samego
 
 Podczas dalszych badań można by odpowiedzieć na następujące pytania
  - Jak zmienia się miara FID dla kolejnych epok?
- - Jak zachowywałaby się miara FID dla prawdziwych zdjęć?
  - Jak zachowywałaby się miara FID jeśli porównywałoby się obrazy jednego artysty z wygenerowanymi obrazami w stylu innego artysty?
  - Czy występuje efekt przeuczenia? Czym mógłby się objawiać?
  - W zbiorach z prawdziwymi obrazami znajdowały się również portrety. Jak algorytm zachowywałby się dla portretów?
