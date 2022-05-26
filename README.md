@@ -83,11 +83,14 @@ Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://ww
 - [x] prównanie pomiędzy epokami
 - [ ] czym jest epoka?
 - [ ] ile trwała jedna epoka?
-- [ ] ten sam obraz wiele stylów
-- [ ] Cechy charakterystyczne artystów
-  - [ ] Mgła Moneta
+- [x] ten sam obraz wiele stylów
+- [x] Cechy charakterystyczne artystów
+  - [x] Mgła Moneta
   - [x] Porównnie nieba
   - [x] roślinność cezannea
+- [ ] Przeuczenie
+- [ ] Portrety 
+- [ ] kompozycja ma znaczenie
 
 ## Podsumowanie
 
@@ -99,7 +102,7 @@ Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://ww
 
 ### Van Gogh
 
-Porównanie wygenerowanych obrazów ze względu na liczbę epok
+### Porównanie wygenerowanych obrazów ze względu na liczbę epok
 
 ![](OUTPUT/vangogh/epoch1.png)
 *1 epoka*
@@ -126,8 +129,8 @@ Porównanie wygenerowanych obrazów ze względu na liczbę epok
 
 ![](OUTPUT/cezanne/epoch1.png)
 *1 epoka*
------
 
+-----
 ![](OUTPUT/cezanne/epoch10.png)
 *10 epok*
 
@@ -168,25 +171,30 @@ Porównanie wygenerowanych obrazów ze względu na liczbę epok
 Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazowi. Na początku widoczne są różne artefakty w postaci czernych lub czerwonych plam, widać również nienaturalne kolory. Z kolejnymi epokami artefakty i krawędzie się zacierają, a kolory zaczynają być bardziej stonowane.
 
 ## Niebo Van Gogha
-Jenym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów z wyeksponowanym niebem.
+Jednym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów z wyeksponowanym niebem.
 
 ![](REAL/vangogh/Van_Gogh_Starry_Night.jpg)
 ![](REAL/vangogh/00318.jpg) ![](REAL/vangogh/00356.jpg) ![](REAL/vangogh/00371.jpg) ![](REAL/vangogh/00403.jpg)
 
-Niebo jest namalowane drobnymi, spiralnymi pociągnięciami pędzla sprawiając wrażenienie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
+Niebo jest namalowane drobnymi, spiralnymi pociągnięciami pędzla sprawiając wrażenie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
 
 ![](OUTPUT/vangogh/vangogh_epoch40/4.png)
 ![](OUTPUT/vangogh/vangogh_epoch40/7.png)
 ![](OUTPUT/vangogh/vangogh_epoch40/8.png)
 
-Niebo na powyżej przedstawionych wygenerowanych obrazach rzeczywiście można powiedzieć, że ma ziarnistą fakturę. Jednak w nie można dostrzec na nich charakterystycznych spiralnych wzorów.
+|Input image|Predicted image, epoch = 40|
+|----|----|
+|![](OUTPUT/comparisons/j/j.jpg)|![](OUTPUT/comparisons/j/vangogh.jpg)|
+
+
+Niebo na powyżej przedstawionych wygenerowanych obrazach rzeczywiście można powiedzieć, że ma ziarnistą fakturę. Tylko na ostatnim zdjęciu przedstawiającym rozgwieżdżone niebo można zauważyć imitację spiralnych pociągnięć pędzla. 
 
 ### Kolory Cezanne'a
 W wygenerowanych obrazach można zwrócić uwagę na zmianę zmianę kolorystyki zdjęć. Wyjątkowo wyraźnie zmiana kolorystyki uwidacznia się dla stylu Cezanne'a. Poniżej kilka przykładów.
 
 ![](OUTPUT/cezanne/epoch40.png) ![](OUTPUT/cezanne/cezanne_epoch40/1.png) ![](OUTPUT/cezanne/cezanne_epoch40/2.png) ![](OUTPUT/cezanne/cezanne_epoch40/3.png)
 
-Zieleń często staje się brunatna. Niebieski zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
+Zieleń często staje się brunatna.  Niebieski zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
 
 ![](OUTPUT/cezanne/cezanne_epoch30/9swqjria72.png)
 ![](OUTPUT/cezanne/cezanne_epoch30/dqmw58nus3.png)
@@ -202,20 +210,47 @@ Również są i te zielone
 
 
 ### Mgła Moneta
-Monet starając się oddać impresję, wrażenie, często przedstawiał świat na swoich obrazach jakby poprzez mgłę, parę lub dym. Kontury wtedy stają się niewyraźne, a szczegóły zacierają się za kłebami mgły. Oto kilka prawdziwych przykładów. 
+Monet starając się oddać impresję, wrażenie, często przedstawiał świat na swoich obrazach jakby poprzez mgłę, parę lub dym. Kontury wtedy stają się niewyraźne, a szczegóły zacierają się za kłębami mgły. Oto kilka prawdziwych przykładów. 
 
 ![](REAL/monet/00318.jpg) ![](REAL/monet/00606.jpg) ![](REAL/monet/00118.jpg) ![](REAL/monet/00179.jpg) ![](REAL/monet/00305.jpg) 
 
 Czy wygenerowane obrazy również posiadają takie cechy?
 
-Na pewno można zauważyć, ogólne rozmazanie obrazów i zatarcie konturów. Jako przykłady można pokazać obrazy poniżej
+Na pewno można zauważyć ogólne rozmazanie obrazów i zatarcie konturów. Jako przykłady posłużą przykłady poniżej
 
 ![](OUTPUT/monet/monet_epoch40/oid73z9dt5.png)
 ![](OUTPUT/monet/monet_epoch40/nauwbfpzw8.png)
 ![](OUTPUT/monet/monet_epoch40/fyilxzrlev.png)
 
-Nie da się jednak dostrzec na tych zdjęciach wyraźnego efektu mgły. Dając na wejście zdjęcia z bardzo jaskrawymi kolorami zachodzącego lub wschodzącego słońca, algorytm znacznie tonuje te kolory - rzeczywiście na wschodac słońca Moneta zawsze jest wszechobecna mgła. 
+Nie da się jednak dostrzec na tych zdjęciach wyraźnego efektu mgły. Dając na wejście zdjęcia z bardzo jaskrawymi kolorami zachodzącego lub wschodzącego słońca, algorytm znacznie tonuje te kolory - rzeczywiście na wschodach słońca Moneta zawsze jest wszechobecna mgła. 
 ![](OUTPUT/monet/sunrise2.png) ![](OUTPUT/monet/sunrise.png) 
+
+## Ten sam obraz - wiele stylów
+Równie ciekawym okazało się zestawienie wygenerowanych obrazów z tego samego zdjęcia dla różnych stylów. Oto niektóre efekty:
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/g/g.jpg)|![](OUTPUT/comparisons/g/cezanne.jpg)|![](OUTPUT/comparisons/g/monet.jpg) |![](OUTPUT/comparisons/g/vangogh.jpg)|
+
+
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/l/l.jpg) |![](OUTPUT/comparisons/l/cezanne.jpg) |![](OUTPUT/comparisons/l/monet.jpg) |![](OUTPUT/comparisons/l/vangogh.jpg) |
+
+
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/c/c.jpg)|![](OUTPUT/comparisons/c/cezanne.jpg)|![](OUTPUT/comparisons/c/monet.jpg)|![](OUTPUT/comparisons/c/vangogh.jpg)|
+
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/j/j.jpg)|![](OUTPUT/comparisons/j/cezanne.jpg)|![](OUTPUT/comparisons/j/monet.jpg)|![](OUTPUT/comparisons/j/vangogh.jpg)|
+
+
+## Dalsze wnioski
 
 ## Źródła
 
