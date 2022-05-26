@@ -80,23 +80,6 @@ Próbowałam również skonfigurować środowisko lokalnie, pobrać wymagane bib
 
 Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial. Zapoznałem się z kodem i odpaliłem go. Szczególnie przyjrzałem się funkcjom generatora: downsample i upsample. Uruchomiłem kod. Jednak więcej niż 9 epok nie był uruchomiony, gdyż za długo to trwało.
 
-- [x] prównanie pomiędzy epokami
-- [ ] czym jest epoka?
-- [ ] ile trwała jedna epoka?
-- [x] ten sam obraz wiele stylów
-- [x] Cechy charakterystyczne artystów
-  - [x] Mgła Moneta
-  - [x] Porównnie nieba
-  - [x] roślinność cezannea
-- [ ] Przeuczenie
-- [ ] Portrety 
-- [ ] kompozycja ma znaczenie
-- [ ] chmury cezanne'a
-- [ ] badanie różnic - system do rozróżniania stylów
-- [ ] metryka dla różnych artystów
-- [x] FID dla 40 epoki
-- [ ] FID dla poszczególnych epok
-
 
 ## Ocena efektywności za pomocą miar
 
@@ -171,6 +154,18 @@ FID_public:  141.21430325414448 distance_public:  1 multiplied_public:  141.2143
 ![](OUTPUT/vangogh/epoch40.png)
 *40 epok*
 
+------
+![](OUTPUT/vangogh/epoch50.png)
+*50 epok*
+
+------
+![](OUTPUT/vangogh/epoch60.png)
+*60 epok*
+
+------
+![](OUTPUT/vangogh/epoch70.png)
+*70 epok*
+
 ### Cezanne
 
 
@@ -193,6 +188,18 @@ FID_public:  141.21430325414448 distance_public:  1 multiplied_public:  141.2143
 ![](OUTPUT/cezanne/epoch40.png)
 *40 epok*
 
+------
+![](OUTPUT/cezanne/epoch50.png)
+*50 epok*
+
+------
+![](OUTPUT/cezanne/epoch60.png)
+*60 epok*
+
+------
+![](OUTPUT/cezanne/epoch70.png)
+*70 epok*
+
 ### Monet
 
 ![](OUTPUT/monet/epoch1.png)
@@ -214,16 +221,24 @@ FID_public:  141.21430325414448 distance_public:  1 multiplied_public:  141.2143
 ![](OUTPUT/monet/epoch40.png)
 *40 epok*
 
+------
+![](OUTPUT/monet/epoch50.png)
+*50 epok*
+
+------
+![](OUTPUT/monet/epoch60.png)
+*60 epok*
+
 
 Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazowi. Na początku widoczne są różne artefakty w postaci czarnych lub czerwonych plam, widać również nienaturalne kolory. Z kolejnymi epokami artefakty i krawędzie się zacierają, a kolory zaczynają być bardziej stonowane.
 
 ## Niebo Van Gogha
-Jednym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów z wyeksponowanym niebem.
+Jednym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów.
 
 ![](REAL/vangogh/Van_Gogh_Starry_Night.jpg)
 ![](REAL/vangogh/00318.jpg) ![](REAL/vangogh/00356.jpg) ![](REAL/vangogh/00371.jpg) ![](REAL/vangogh/00403.jpg)
 
-Niebo jest namalowane drobnymi, spiralnymi pociągnięciami pędzla sprawiając wrażenie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
+Niebo jest namalowane drobnymi, czasami spiralnymi pociągnięciami pędzla sprawiając wrażenie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
 
 ![](OUTPUT/vangogh/vangogh_epoch40/4.png)
 ![](OUTPUT/vangogh/vangogh_epoch40/7.png)
@@ -297,7 +312,34 @@ Równie ciekawym okazało się zestawienie wygenerowanych obrazów z tego samego
 |![](OUTPUT/comparisons/j/j.jpg)|![](OUTPUT/comparisons/j/cezanne.jpg)|![](OUTPUT/comparisons/j/monet.jpg)|![](OUTPUT/comparisons/j/vangogh.jpg)|
 
 
-## Dalsze wnioski
+## Dalsze badania
+
+Podczas dalszych badań można by odpowiedzieć na następujące pytania
+ - Jak zmienia się miara FID dla kolejnych epok?
+ - Jak zachowywałaby się miara FID dla prawdziwych zdjęć?
+ - Jak zachowywałaby się miara FID jeśli porównywałoby się obrazy jednego artysty z wygenerowanymi obrazami w stylu innego artysty?
+ - Czy występuje efekt przeuczenia? Czym mógłby się objawiać?
+ - W zbiorach z prawdziwymi obrazami znajdowały się również portrety. Jak algorytm zachowywałby się dla portretów?
+ - Jak algorytm działałby "na odwrót" - czyli jak z obrazu robiłby zdjęcie?
+ - Czy na podstawie wyuczonych modelów można by stworzyć system rozpoznający jakiego autorstwa jest dany obraz?
+
+<!-- 
+- [x] prównanie pomiędzy epokami
+- [ ] czym jest epoka?
+- [ ] ile trwała jedna epoka?
+- [x] ten sam obraz wiele stylów
+- [x] Cechy charakterystyczne artystów
+  - [x] Mgła Moneta
+  - [x] Porównnie nieba
+  - [x] roślinność cezannea
+- [ ] Przeuczenie
+- [ ] Portrety 
+- [ ] kompozycja ma znaczenie
+- [ ] chmury cezanne'a
+- [ ] badanie różnic - system do rozróżniania stylów
+- [ ] metryka dla różnych artystów
+- [x] FID dla 40 epoki
+- [ ] FID dla poszczególnych epok -->
 
 ## Źródła
 
