@@ -91,18 +91,65 @@ Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://ww
 - [ ] Przeuczenie
 - [ ] Portrety 
 - [ ] kompozycja ma znaczenie
+- [ ] chmury cezanne'a
+- [ ] badanie różnic - system do rozróżniania stylów
+- [ ] metryka dla różnych artystów
+- [x] FID dla 40 epoki
+- [ ] FID dla poszczególnych epok
 
-## Podsumowanie
 
-### Opis wykorzystywanych zbiorów danych
+## Ocena efektywności za pomocą miar
 
-### Ocena efektywności za pomocą miar
+### Co to jest FID?
+Metoda Fréchet Inception Distance (FID) , wraz z metodą Inception Score (IS), to dwie najpowszechniej używane metody w ostatnich publikacjach jako oceny działania GANów. 
 
-### Analiza porównawcza wyników dla różnych parametrów
+W metodzie FID używa się *Inception network* do wydobycia cech z warstwy pośredniej. Następnie obliczany jest rozkład tych cech dla danych używając wielowymiarowego rozkładu normalnego ze średnią $\mu$ i kowariancją $\Sigma$. FID pomiędzy prawdziwymi obrazami $r$ i wygenerowanymi $g$ można obliczyć jako
+
+$$FID = ||\mu_r - \mu_g||^2 $$
+$$ + Tr(\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{1/2}),$$
+
+gdzie $Tr$ oznacza ślad macierzy.
+
+
+Oceny FID dla poszczególnych artystów dla wyniku po 40 epokach przedstawione zostały poniżej
+
+||Monet|Cezanne|Van Gogh|
+|----|---|---|---|
+|**FID:**|73.63|48.42|141.21|
+
+<!-- Monet
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (2400, 1072)
+np.min(d, axis=1).shape= (2400,)
+distance= 0.24011936584153162
+FID_public:  73.63257986488566 distance_public:  1 multiplied_public:  73.63257986488492
+
+Cezanne
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (2333, 2400)
+np.min(d, axis=1).shape= (2333,)
+distance= 0.2021466815879379
+FID_public:  48.42357327252762 distance_public:  1 multiplied_public:  48.423573272527136
+
+Vangogh
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (2445, 400)
+np.min(d, axis=1).shape= (2445,)
+distance= 0.25525586414974816
+FID_public:  141.21430325414448 distance_public:  1 multiplied_public:  141.21430325414306 -->
+
+## Porównanie wygenerowanych obrazów ze względu na liczbę epok
 
 ### Van Gogh
-
-### Porównanie wygenerowanych obrazów ze względu na liczbę epok
 
 ![](OUTPUT/vangogh/epoch1.png)
 *1 epoka*
@@ -168,7 +215,7 @@ Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://ww
 *40 epok*
 
 
-Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazowi. Na początku widoczne są różne artefakty w postaci czernych lub czerwonych plam, widać również nienaturalne kolory. Z kolejnymi epokami artefakty i krawędzie się zacierają, a kolory zaczynają być bardziej stonowane.
+Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazowi. Na początku widoczne są różne artefakty w postaci czarnych lub czerwonych plam, widać również nienaturalne kolory. Z kolejnymi epokami artefakty i krawędzie się zacierają, a kolory zaczynają być bardziej stonowane.
 
 ## Niebo Van Gogha
 Jednym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów z wyeksponowanym niebem.
@@ -194,7 +241,7 @@ W wygenerowanych obrazach można zwrócić uwagę na zmianę zmianę kolorystyki
 
 ![](OUTPUT/cezanne/epoch40.png) ![](OUTPUT/cezanne/cezanne_epoch40/1.png) ![](OUTPUT/cezanne/cezanne_epoch40/2.png) ![](OUTPUT/cezanne/cezanne_epoch40/3.png)
 
-Zieleń często staje się brunatna.  Niebieski zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
+Bliska i jaśniejsza zieleń często staje się brunatna.  Niebieski lub daleka zieleń zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
 
 ![](OUTPUT/cezanne/cezanne_epoch30/9swqjria72.png)
 ![](OUTPUT/cezanne/cezanne_epoch30/dqmw58nus3.png)
