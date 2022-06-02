@@ -80,26 +80,90 @@ Próbowałam również skonfigurować środowisko lokalnie, pobrać wymagane bib
 
 Skorzystałem z tutoriala wystawionego przy konkursie z Kaggle, czyli https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial. Zapoznałem się z kodem i odpaliłem go. Szczególnie przyjrzałem się funkcjom generatora: downsample i upsample. Uruchomiłem kod. Jednak więcej niż 9 epok nie był uruchomiony, gdyż za długo to trwało.
 
-- [x] prównanie pomiędzy epokami
-- [ ] czym jest epoka?
-- [ ] ile trwała jedna epoka?
-- [ ] ten sam obraz wiele stylów
-- [ ] Cechy charakterystyczne artystów
-  - [ ] Mgła Moneta
-  - [x] Porównnie nieba
-  - [x] roślinność cezannea
 
-## Podsumowanie
+## Ocena efektywności za pomocą miar
 
-### Opis wykorzystywanych zbiorów danych
+### Co to jest FID?
+Metoda Fréchet Inception Distance (FID) , wraz z metodą Inception Score (IS), to dwie najpowszechniej używane metody w ostatnich publikacjach jako oceny działania GANów. 
 
-### Ocena efektywności za pomocą miar
+W metodzie FID używa się *Inception network* do wydobycia cech z warstwy pośredniej. Następnie obliczany jest rozkład tych cech dla danych używając wielowymiarowego rozkładu normalnego ze średnią $\mu$ i kowariancją $\Sigma$. FID pomiędzy prawdziwymi obrazami $r$ i wygenerowanymi $g$ można obliczyć jako
 
-### Analiza porównawcza wyników dla różnych parametrów
+$$FID = ||\mu_r - \mu_g||^2 $$
+$$ + Tr(\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{1/2}),$$
+
+gdzie $Tr$ oznacza ślad macierzy.
+
+W każdym razie im mniejsza miara tym tym lepiej. Oceny FID dla poszczególnych artystów dla wyniku po 40 epokach przedstawione zostały poniżej
+
+||Monet|Cezanne|Van Gogh|
+|----|---|---|---|
+|**Photos with style - FID =**|73.63|48.42|141.21|
+|**Photos without style - FID =**|97.28|196.56|196.56|
+
+
+Powyższe wartości zostały obliczone na kodu obliczającego FID z następującego linku:
+https://www.kaggle.com/code/wendykan/demo-mifid-metric-for-dog-image-generation-comp/notebook. Z zestawienia widać, że po dodaniu stylu FID maleje. Zastanawiające jest to, że zdjęcia bez stylu w porównaniu z obrazami Cezanne'a oraz Van Gogha wypadają identycznie pod względem FID.
+
+<!-- Monet
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (2400, 1072)
+np.min(d, axis=1).shape= (2400,)
+distance= 0.24011936584153162
+FID_public:  73.63257986488566 distance_public:  1 multiplied_public:  73.63257986488492
+
+Cezanne
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (2333, 2400)
+np.min(d, axis=1).shape= (2333,)
+distance= 0.2021466815879379
+FID_public:  48.42357327252762 distance_public:  1 multiplied_public:  48.423573272527136
+
+Vangogh
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (2445, 400)
+np.min(d, axis=1).shape= (2445,)
+distance= 0.25525586414974816
+FID_public:  141.21430325414448 distance_public:  1 multiplied_public:  141.21430325414306 
+
+Photos vs Cezanne
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (6287, 525)
+np.min(d, axis=1).shape= (6287,)
+distance= 0.32137774360086246
+FID_public:  196.5578486308402 distance_public:  1 multiplied_public:  196.55784863083824
+
+
+Photos vs Van Gogh
+m1,m2 shape= ((2048,), (2048,)) s1,s2= ((2048, 2048), (2048, 2048))
+starting calculating FID
+covmean.shape= (2048, 2048)
+done with FID, starting distance calculation
+d.shape= (6287, 525)
+np.min(d, axis=1).shape= (6287,)
+distance= 0.32137774360086246
+FID_public:  196.5578486308402 distance_public:  1 multiplied_public:  196.55784863083824
+-->
+
+## Porównanie wygenerowanych obrazów ze względu na liczbę epok
+
+### Co to jest epoka?
+<!-- An epoch in machine learning means one complete pass of the training dataset through the algorithm. This epochs number is an important hyperparameter for the algorithm. It specifies the number of epochs or complete passes of the entire training dataset passing through the training or learning process of the algorithm. -->
+
+W uczeniu maszynowym *epoką* nazywamy jedno przejście algorytmu po całym treningowym zbiorze danych. Ten wskaźnik pokazuje jak daleko zaszedł proces trenowania lub uczenia modelu. Poniżej znajduje się zestawienie wygenerowanych zdjęć przez model dla kolejnej liczby epok dla poszczególnych artystów.
 
 ### Van Gogh
-
-Porównanie wygenerowanych obrazów ze względu na liczbę epok
 
 ![](OUTPUT/vangogh/epoch1.png)
 *1 epoka*
@@ -121,13 +185,25 @@ Porównanie wygenerowanych obrazów ze względu na liczbę epok
 ![](OUTPUT/vangogh/epoch40.png)
 *40 epok*
 
+------
+![](OUTPUT/vangogh/epoch50.png)
+*50 epok*
+
+------
+![](OUTPUT/vangogh/epoch60.png)
+*60 epok*
+
+------
+![](OUTPUT/vangogh/epoch70.png)
+*70 epok*
+
 ### Cezanne
 
 
 ![](OUTPUT/cezanne/epoch1.png)
 *1 epoka*
------
 
+-----
 ![](OUTPUT/cezanne/epoch10.png)
 *10 epok*
 
@@ -142,6 +218,18 @@ Porównanie wygenerowanych obrazów ze względu na liczbę epok
 ------
 ![](OUTPUT/cezanne/epoch40.png)
 *40 epok*
+
+------
+![](OUTPUT/cezanne/epoch50.png)
+*50 epok*
+
+------
+![](OUTPUT/cezanne/epoch60.png)
+*60 epok*
+
+------
+![](OUTPUT/cezanne/epoch70.png)
+*70 epok*
 
 ### Monet
 
@@ -164,58 +252,124 @@ Porównanie wygenerowanych obrazów ze względu na liczbę epok
 ![](OUTPUT/monet/epoch40.png)
 *40 epok*
 
+------
+![](OUTPUT/monet/epoch50.png)
+*50 epok*
 
-Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazowi. Na początku widoczne są różne artefakty w postaci czernych lub czerwonych plam, widać również nienaturalne kolory. Z kolejnymi epokami artefakty i krawędzie się zacierają, a kolory zaczynają być bardziej stonowane.
+------
+![](OUTPUT/monet/epoch60.png)
+*60 epok*
+
+
+Widać, że większa liczba epok sprzyja lepszej jakości wygenerowanemu obrazowi. Na początku widoczne są różne artefakty w postaci czarnych lub czerwonych plam, widać również nienaturalne kolory. Z kolejnymi epokami artefakty i krawędzie się zacierają, a kolory zaczynają być bardziej stonowane.
 
 ## Niebo Van Gogha
-Jenym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów z wyeksponowanym niebem.
+Jednym z wielu charakterystycznych aspektów stylu Van Gogha jest sposób malowania nieba czy też tła. Poniżej przedstawione jest kilka prawdziwych obrazów.
 
 ![](REAL/vangogh/Van_Gogh_Starry_Night.jpg)
 ![](REAL/vangogh/00318.jpg) ![](REAL/vangogh/00356.jpg) ![](REAL/vangogh/00371.jpg) ![](REAL/vangogh/00403.jpg)
 
-Niebo jest namalowane drobnymi, spiralnymi pociągnięciami pędzla sprawiając wrażenienie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
+Niebo jest namalowane drobnymi, czasami spiralnymi pociągnięciami pędzla sprawiając wrażenie ziarnistości. Czy wygenerowane obrazy również mają taką cechę? Poniżej przedstawiono wygenerowane obrazy.
 
 ![](OUTPUT/vangogh/vangogh_epoch40/4.png)
 ![](OUTPUT/vangogh/vangogh_epoch40/7.png)
 ![](OUTPUT/vangogh/vangogh_epoch40/8.png)
 
-Niebo na powyżej przedstawionych wygenerowanych obrazach rzeczywiście można powiedzieć, że ma ziarnistą fakturę. Jednak w nie można dostrzec na nich charakterystycznych spiralnych wzorów.
+|Input image|Predicted image, epoch = 40|
+|----|----|
+|![](OUTPUT/comparisons/j/j.jpg)|![](OUTPUT/comparisons/j/vangogh.jpg)|
+
+
+Niebo na powyżej przedstawionych wygenerowanych obrazach rzeczywiście można powiedzieć, że ma ziarnistą fakturę. Tylko na ostatnim zdjęciu przedstawiającym rozgwieżdżone niebo można zauważyć imitację spiralnych pociągnięć pędzla. 
 
 ### Kolory Cezanne'a
 W wygenerowanych obrazach można zwrócić uwagę na zmianę zmianę kolorystyki zdjęć. Wyjątkowo wyraźnie zmiana kolorystyki uwidacznia się dla stylu Cezanne'a. Poniżej kilka przykładów.
 
 ![](OUTPUT/cezanne/epoch40.png) ![](OUTPUT/cezanne/cezanne_epoch40/1.png) ![](OUTPUT/cezanne/cezanne_epoch40/2.png) ![](OUTPUT/cezanne/cezanne_epoch40/3.png)
 
-Zieleń często staje się brunatna. Niebieski zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
+Bliska i jaśniejsza zieleń często staje się brunatna.  Niebieski lub daleka zieleń zaś zamienia się w barwy zielone - jak na zdjęciach poniżej. 
 
-![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5C9swqjria72.png)
-![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5Cdqmw58nus3.png)
-![](OUTPUT%5Ccezanne%5Ccezanne_epoch30%5Cxxafx167gs.png)
+![](OUTPUT/cezanne/cezanne_epoch30/9swqjria72.png)
+![](OUTPUT/cezanne/cezanne_epoch30/dqmw58nus3.png)
+![](OUTPUT/cezanne/cezanne_epoch30/xxafx167gs.png)
 
 Rzeczywiście istnieje wiele prawdziwych pejzaży Cezanne'a w kolorystyce o dominujących kolorach brunatnych i żółtych, lub zielonych. Poniżej kilka przykładów o dominujących brunatnych kolorach
 
-![](REAL%5Ccezanne%5C00299.jpg) ![](REAL%5Ccezanne%5C00375.jpg) ![](REAL%5Ccezanne%5C00084.jpg) ![](REAL%5Ccezanne%5C00216.jpg) ![](REAL%5Ccezanne%5C00277.jpg) 
+![](REAL/cezanne/00299.jpg) ![](REAL/cezanne/00375.jpg) ![](REAL/cezanne/00084.jpg) ![](REAL/cezanne/00216.jpg) ![](REAL/cezanne/00277.jpg) 
 
 Również są i te zielone
 
-![](REAL%5Ccezanne%5C00307.jpg) ![](REAL%5Ccezanne%5C00226.jpg) ![](REAL%5Ccezanne%5C00231.jpg) 
+![](REAL/cezanne/00307.jpg) ![](REAL/cezanne/00226.jpg) ![](REAL/cezanne/00231.jpg) 
 
 
 ### Mgła Moneta
-Monet starając się oddać impresję, wrażenie, często przedstawiał świat na swoich obrazach jakby poprzez mgłę, parę lub dym. Kontury wtedy stają się niewyraźne, a szczegóły zacierają się za kłebami mgły. Oto kilka prawdziwych przykładów. 
+Monet starając się oddać impresję, wrażenie, często przedstawiał świat na swoich obrazach jakby poprzez mgłę, parę lub dym. Kontury wtedy stają się niewyraźne, a szczegóły zacierają się za kłębami mgły. Oto kilka prawdziwych przykładów. 
 
-![](REAL%5Cmonet%5C00318.jpg) ![](REAL%5Cmonet%5C00606.jpg) ![](REAL%5Cmonet%5C00118.jpg) ![](REAL%5Cmonet%5C00179.jpg) ![](REAL%5Cmonet%5C00305.jpg) 
+![](REAL/monet/00318.jpg) ![](REAL/monet/00606.jpg) ![](REAL/monet/00118.jpg) ![](REAL/monet/00179.jpg) ![](REAL/monet/00305.jpg) 
 
 Czy wygenerowane obrazy również posiadają takie cechy?
 
-Na pewno można zauważyć, ogólne rozmazanie obrazów i zatarcie konturów. Jako przykłady można pokazać obrazy poniżej
+Na pewno można zauważyć ogólne rozmazanie obrazów i zatarcie konturów. Jako przykłady posłużą przykłady poniżej
 
-![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Coid73z9dt5.png)
-![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Cnauwbfpzw8.png)
-![](OUTPUT%5Cmonet%5Cmonet_epoch40%5Cfyilxzrlev.png)
+![](OUTPUT/monet/monet_epoch40/oid73z9dt5.png)
+![](OUTPUT/monet/monet_epoch40/nauwbfpzw8.png)
+![](OUTPUT/monet/monet_epoch40/fyilxzrlev.png)
 
-Nie da się jednak dostrzec na tych zdjęciach wyraźnego efektu mgły. Dając na wejście zdjęcia z bardzo jaskrawymi kolorami zachodzącego lub wschodzącego słońca, algorytm znacznie tonuje te kolory - rzeczywiście na wschodac słońca Moneta zawsze jest wszechobecna mgła. 
-![](OUTPUT%5Cmonet%5Csunrise2.png) ![](OUTPUT%5Cmonet%5Csunrise.png) 
+Nie da się jednak dostrzec na tych zdjęciach wyraźnego efektu mgły. Dając na wejście zdjęcia z bardzo jaskrawymi kolorami zachodzącego lub wschodzącego słońca, algorytm znacznie tonuje te kolory - rzeczywiście na wschodach słońca Moneta zawsze jest wszechobecna mgła. 
+![](OUTPUT/monet/sunrise2.png) ![](OUTPUT/monet/sunrise.png) 
+
+## Ten sam obraz - wiele stylów
+Równie ciekawym okazało się zestawienie wygenerowanych obrazów z tego samego zdjęcia dla różnych stylów. Oto niektóre efekty:
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/g/g.jpg)|![](OUTPUT/comparisons/g/cezanne.jpg)|![](OUTPUT/comparisons/g/monet.jpg) |![](OUTPUT/comparisons/g/vangogh.jpg)|
+
+
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/l/l.jpg) |![](OUTPUT/comparisons/l/cezanne.jpg) |![](OUTPUT/comparisons/l/monet.jpg) |![](OUTPUT/comparisons/l/vangogh.jpg) |
+
+
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/c/c.jpg)|![](OUTPUT/comparisons/c/cezanne.jpg)|![](OUTPUT/comparisons/c/monet.jpg)|![](OUTPUT/comparisons/c/vangogh.jpg)|
+
+
+|Zdjęcie|Cezanne|Monet|Van Gogh|
+|----|------|-----|----|
+|![](OUTPUT/comparisons/j/j.jpg)|![](OUTPUT/comparisons/j/cezanne.jpg)|![](OUTPUT/comparisons/j/monet.jpg)|![](OUTPUT/comparisons/j/vangogh.jpg)|
+
+
+## Dalsze badania
+
+Podczas dalszych badań można by odpowiedzieć na następujące pytania
+ - Jak zmienia się miara FID dla kolejnych epok?
+ - Jak zachowywałaby się miara FID jeśli porównywałoby się obrazy jednego artysty z wygenerowanymi obrazami w stylu innego artysty?
+ - Czy występuje efekt przeuczenia? Czym mógłby się objawiać?
+ - W zbiorach z prawdziwymi obrazami znajdowały się również portrety. Jak algorytm zachowywałby się dla portretów?
+ - Jak algorytm działałby "na odwrót" - czyli jak z obrazu robiłby zdjęcie?
+ - Czy na podstawie wyuczonych modelów można by stworzyć system rozpoznający jakiego autorstwa jest dany obraz?
+
+<!-- 
+- [x] prównanie pomiędzy epokami
+- [ ] czym jest epoka?
+- [ ] ile trwała jedna epoka?
+- [x] ten sam obraz wiele stylów
+- [x] Cechy charakterystyczne artystów
+  - [x] Mgła Moneta
+  - [x] Porównnie nieba
+  - [x] roślinność cezannea
+- [ ] Przeuczenie
+- [ ] Portrety 
+- [ ] kompozycja ma znaczenie
+- [ ] chmury cezanne'a
+- [ ] badanie różnic - system do rozróżniania stylów
+- [ ] metryka dla różnych artystów
+- [x] FID dla 40 epoki
+- [ ] FID dla poszczególnych epok -->
 
 ## Źródła
 
