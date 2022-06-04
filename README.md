@@ -342,6 +342,9 @@ Równie ciekawym okazało się zestawienie wygenerowanych obrazów z tego samego
 |----|------|-----|----|
 |![](OUTPUT/comparisons/j/j.jpg)|![](OUTPUT/comparisons/j/cezanne.jpg)|![](OUTPUT/comparisons/j/monet.jpg)|![](OUTPUT/comparisons/j/vangogh.jpg)|
 
+## Wybrane obrazy
+
+Szerszą prezentację wyników naszego projektu można znaleźć pod [tym linkiem](https://drive.google.com/drive/u/0/folders/1mfCu8Eg0nNgwaB9XlcgGzvQfvr_p5vy7).
 
 ## Dalsze badania
 
